@@ -8,13 +8,21 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="buttonStyle" TargetType="Button">
+            <x:String x:Key="ButtonText">Sing In</x:String>
+            <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="Padding" Value="30, 0, 30, 0"/>
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="BackgroundColor" Value="CadetBlue"/>
                 <Setter Property="FontSize" Value="Default" />
+                <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="CornerRadius" Value="7"/>
 
+            </Style>
+            <Style x:Key="EntyStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="PlaceholderColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="White"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -42,19 +50,19 @@
                 Text="or"/>
 
         <Entry
-                x:Name="main_page_login"
-                HorizontalTextAlignment="Center"
-                Placeholder="LOGIN"
-                BackgroundColor="Beige">
+            x:Name="main_page_login"
+            Style="{StaticResource EntyStyle}"
+            HorizontalTextAlignment="Center"
+            Placeholder="LOGIN">
         </Entry>
 
         <Entry
-               x:Name="main_page_password"
-                HorizontalTextAlignment="Center"
-                Placeholder="PASSWORD"
-                BackgroundColor="Yellow">
-
-        </Entry>
+            x:Name="main_page_password"
+            Style="{StaticResource EntyStyle}"
+            HorizontalTextAlignment="Center"
+            Placeholder="PASSWORD"
+            IsPassword="True">
+        </Entry>    
 
         <StackLayout
             Orientation="Horizontal"
@@ -72,8 +80,8 @@
         </StackLayout>
 
         <Button
-            Text="Sign In"
-            Style="{StaticResource buttonStyle}"
+            Text="{StaticResource ButtonText}"
+            Style="{StaticResource ButtonStyle}"
             HorizontalOptions="Center" 
             VerticalOptions="CenterAndExpand"/>
 
