@@ -6,11 +6,79 @@
              mc:Ignorable="d"
              x:Class="SignInScreen.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="Padding" Value="30, 0, 30, 0"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="CadetBlue"/>
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="CornerRadius" Value="7"/>
+
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout
+        Margin="10, 10, 10, 30"
+            Orientation="Vertical"
+            VerticalOptions="EndAndExpand"
+            Spacing="10">
+
+        <Label Text="Sign in with social networks"
+                        HorizontalTextAlignment="Center"/>
+
+        <StackLayout
+            Orientation="Horizontal"
+            HorizontalOptions="Center"
+            Spacing="10">
+            <Image Source="facebook" WidthRequest="70" Aspect="AspectFit"/>
+            <Image Source="linkedin" WidthRequest="70" Aspect="AspectFit"/>
+            <Image Source="twitter" WidthRequest="70" Aspect="AspectFit"/>
+        </StackLayout>
+
+        <Label
+                HorizontalOptions="Center"
+                Text="or"/>
+
+        <Entry
+                x:Name="main_page_login"
+                HorizontalTextAlignment="Center"
+                Placeholder="LOGIN"
+                BackgroundColor="Beige">
+        </Entry>
+
+        <Entry
+               x:Name="main_page_password"
+                HorizontalTextAlignment="Center"
+                Placeholder="PASSWORD"
+                BackgroundColor="Yellow">
+
+        </Entry>
+
+        <StackLayout
+            Orientation="Horizontal"
+            HorizontalOptions="Center"
+            Spacing="10">
+            
+            <Label
+                HorizontalOptions="Center"
+                Text="Forgot Password"/>
+
+            <Label
+                HorizontalOptions="Center"
+                Text="Dont`t have an account?"/>
+
+        </StackLayout>
+
+        <Button
+            Text="Sign In"
+            Style="{StaticResource buttonStyle}"
+            HorizontalOptions="Center" 
+            VerticalOptions="CenterAndExpand"/>
+
+
     </StackLayout>
+
 
 </ContentPage>
