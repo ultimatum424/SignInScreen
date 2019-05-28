@@ -4,37 +4,54 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SignInScreen.MainPage">
+             x:Class="SignInScreen.MainPage"
+            xmlns:custom="clr-namespace:SignInScreen.custom">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <x:String x:Key="ButtonText">Sing In</x:String>
+            
             <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="Padding" Value="30, 0, 30, 0"/>
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="BackgroundColor" Value="CadetBlue"/>
-                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="CornerRadius" Value="7"/>
 
             </Style>
-            <Style x:Key="EntyStyle" TargetType="Entry">
+            <Style x:Key="EntryStyle" TargetType="custom:CustomEntry">
+                <Setter Property="CornerRadius" Value="4"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="IsCurvedCornersEnabled" Value="True"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="PlaceholderColor" Value="Black"/>
-                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+             
+            <Style x:Key="LabelLinkStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="Black"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <StackLayout
-        Margin="10, 10, 10, 30"
+        Margin="20, 20, 20, 30"
             Orientation="Vertical"
             VerticalOptions="EndAndExpand"
             Spacing="10">
 
-        <Label Text="Sign in with social networks"
-                        HorizontalTextAlignment="Center"/>
+        <Label
+            Style="{StaticResource LabelStyle}"
+            Text="Sign in with social networks"
+            HorizontalTextAlignment="Center"/>
 
         <StackLayout
             Orientation="Horizontal"
@@ -46,23 +63,22 @@
         </StackLayout>
 
         <Label
-                HorizontalOptions="Center"
-                Text="or"/>
+            HorizontalOptions="Center"
+            Style="{StaticResource LabelStyle}"
+            Text="or"/>
 
-        <Entry
+        <custom:CustomEntry
             x:Name="main_page_login"
-            Style="{StaticResource EntyStyle}"
-            HorizontalTextAlignment="Center"
-            Placeholder="LOGIN">
-        </Entry>
+            Style="{StaticResource EntryStyle}"
+            Placeholder="Pen name">
+        </custom:CustomEntry>
 
-        <Entry
+        <custom:CustomEntry
             x:Name="main_page_password"
-            Style="{StaticResource EntyStyle}"
-            HorizontalTextAlignment="Center"
-            Placeholder="PASSWORD"
+            Style="{StaticResource EntryStyle}"
+            Placeholder="Password"
             IsPassword="True">
-        </Entry>    
+        </custom:CustomEntry>    
 
         <StackLayout
             Orientation="Horizontal"
@@ -71,10 +87,12 @@
             
             <Label
                 HorizontalOptions="Center"
+                Style="{StaticResource LabelLinkStyle}"
                 Text="Forgot Password"/>
 
             <Label
                 HorizontalOptions="Center"
+                Style="{StaticResource LabelLinkStyle}"
                 Text="Dont`t have an account?"/>
 
         </StackLayout>
