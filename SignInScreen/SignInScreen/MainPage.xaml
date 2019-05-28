@@ -29,15 +29,17 @@
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="PlaceholderColor" Value="Black"/>
             </Style>
-             
             <Style x:Key="LabelLinkStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="Gray"/>
                 <Setter Property="FontSize" Value="16"/>
             </Style>
-
             <Style x:Key="LabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="TextColor" Value="Black"/>
+            </Style>
+            <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
+                <Setter Property="WidthRequest" Value="70"/>
+                <Setter Property="Aspect" Value="AspectFill"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -57,9 +59,15 @@
             Orientation="Horizontal"
             HorizontalOptions="Center"
             Spacing="10">
-            <Image Source="facebook" WidthRequest="70" Aspect="AspectFit"/>
-            <Image Source="linkedin" WidthRequest="70" Aspect="AspectFit"/>
-            <Image Source="twitter" WidthRequest="70" Aspect="AspectFit"/>
+            <ImageButton Source="facebook"
+                         Style="{StaticResource ImageButtonStyle}"
+                         Clicked="FacebookButtonOnClick"/>
+            <ImageButton Source="linkedin" 
+                         Style="{StaticResource ImageButtonStyle}"
+                         Clicked="LinkedinButtonOnClick"/>
+            <ImageButton Source="twitter"
+                         Style="{StaticResource ImageButtonStyle}"
+                         Clicked="TwitterButtonOnClick"/>
         </StackLayout>
 
         <Label

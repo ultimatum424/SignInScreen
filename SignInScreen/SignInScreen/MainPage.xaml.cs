@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SignInScreen
@@ -16,6 +17,26 @@ namespace SignInScreen
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        public async void OpenBrowser(Uri uri)
+        {
+            await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+        }
+
+        private void FacebookButtonOnClick(object sender, EventArgs e)
+        {
+            OpenBrowser(new Uri("https://ru-ru.facebook.com/"));
+        }
+
+        private void LinkedinButtonOnClick(object sender, EventArgs e)
+        {
+            OpenBrowser(new Uri("https://ru.linkedin.com/"));
+        }
+
+        private void TwitterButtonOnClick(object sender, EventArgs e)
+        {
+            OpenBrowser(new Uri("https://twitter.com/?lang=ru"));
         }
     }
 }
