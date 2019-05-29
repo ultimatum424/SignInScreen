@@ -108,6 +108,7 @@
         <Button
             Text="{StaticResource ButtonText}"
             Style="{StaticResource ButtonStyle}"
+            Clicked="OnSignInButtonClick"
             HorizontalOptions="Center" 
             VerticalOptions="CenterAndExpand"/>
 

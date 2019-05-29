@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SignInScreen.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,9 +15,13 @@ namespace SignInScreen
     [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage
     {
+
+        private ILoginApi api;
         public MainPage()
         {
             InitializeComponent();
+
+            api = new ApiFactory().Create();
         }
 
         public async void OpenBrowser(Uri uri)
@@ -37,6 +42,25 @@ namespace SignInScreen
         private void TwitterButtonOnClick(object sender, EventArgs e)
         {
             OpenBrowser(new Uri("https://twitter.com/?lang=ru"));
+        }
+
+        private void OnSignInButtonClick(object sender, EventArgs e)
+        {
+            var loginForm = new LoginForm
+            {
+                Login = "peter@klaven",
+                Password = "cityslicka"
+               // Login = main_page_login.Text,
+                //Password = main_page_password.Text
+            };
+
+            SingIn(loginForm);
+
+        }
+
+        private async void SingIn(LoginForm loginForm)
+        {
+            var result = await api.TryToLogin(loginForm).Result.Content.ReadAsStringAsync();
         }
     }
 }
