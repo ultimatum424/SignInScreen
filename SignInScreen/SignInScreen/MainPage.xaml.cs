@@ -1,4 +1,5 @@
-﻿using SignInScreen.Domain;
+﻿using Newtonsoft.Json.Linq;
+using SignInScreen.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,13 +55,41 @@ namespace SignInScreen
                 //Password = main_page_password.Text
             };
 
+            main_page_loading_bar.IsRunning = true;
+            main_page_button.IsEnabled = false;
+            main_page_login.IsEnabled = false;
+            main_page_password.IsEnabled = false;
+
             SingIn(loginForm);
 
         }
 
         private async void SingIn(LoginForm loginForm)
         {
-            var result = await api.TryToLogin(loginForm).Result.Content.ReadAsStringAsync();
+            var result = await api.TryToLogin(loginForm);
+            main_page_loading_bar.IsRunning = false;
+            main_page_button.IsEnabled = true;
+            main_page_login.IsEnabled = true;
+            main_page_password.IsEnabled = true;
+            if (result.IsSuccessStatusCode)
+            {
+                OnDisplayAlertSucsess();
+            } else
+            {
+                string errorMessage = await result.Content.ReadAsStringAsync();
+                var s = JObject.Parse(errorMessage);
+                OnDisplayAlertError(s["error"].ToString());
+            }
+        }
+
+        private async void OnDisplayAlertError(string errorMessage)
+        {
+            await DisplayAlert("Error Sign In", errorMessage, "OK");
+        }
+
+        private async void OnDisplayAlertSucsess()
+        {
+            await DisplayAlert("Sucsess", "You successfully logged in ", "OK");
         }
     }
 }

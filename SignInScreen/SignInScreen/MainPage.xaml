@@ -106,11 +106,19 @@
         </StackLayout>
 
         <Button
+            x:Name="main_page_button"
             Text="{StaticResource ButtonText}"
             Style="{StaticResource ButtonStyle}"
             Clicked="OnSignInButtonClick"
             HorizontalOptions="Center" 
             VerticalOptions="CenterAndExpand"/>
+
+        <ActivityIndicator
+            x:Name="main_page_loading_bar"
+            Visual="Material"
+            HorizontalOptions="Center"
+            IsRunning="False"
+            Color="ForestGreen"/>
 
 
     </StackLayout>
