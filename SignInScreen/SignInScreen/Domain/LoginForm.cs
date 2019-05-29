@@ -3,7 +3,7 @@ namespace SignInScreen.Domain
 {
 
     
-    public class LoginForm
+    public class LoginEntity
     {
         [AliasAs("email")]
         public string Login { get; set; }

@@ -47,7 +47,7 @@ namespace SignInScreen
 
         private void OnSignInButtonClick(object sender, EventArgs e)
         {
-            var loginForm = new LoginForm
+            var loginForm = new LoginEntity
             {
                 Login = "peter@klaven",
                 Password = "cityslicka"
@@ -64,7 +64,7 @@ namespace SignInScreen
 
         }
 
-        private async void SingIn(LoginForm loginForm)
+        private async void SingIn(LoginEntity loginForm)
         {
             var result = await api.TryToLogin(loginForm);
             main_page_loading_bar.IsRunning = false;

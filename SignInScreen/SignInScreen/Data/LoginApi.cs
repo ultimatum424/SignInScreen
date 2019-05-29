@@ -11,7 +11,7 @@ namespace SignInScreen
     public interface ILoginApi
     {
         [Post("/login")]
-        Task<HttpResponseMessage> TryToLogin([Body(BodySerializationMethod.UrlEncoded)] LoginForm loginForm);
+        Task<HttpResponseMessage> TryToLogin([Body(BodySerializationMethod.UrlEncoded)] LoginEntity loginForm);
 
         [Post("/login")]
         Task<HttpResponseMessage> Zero();
